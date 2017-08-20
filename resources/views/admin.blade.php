@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title ng-bind="'Desiflight | ' + title">1ClickStudios | Admin Login</title>
+  <link rel="icon" type="image/png" href="{{ URL::asset('resources/assets/img/favicon.png') }}">
   <meta name="description" content="1ClickStudios, A wedding is one of the most auspicious and special day in a person's life. And photographing that day, to cherish the memories years after is something that any couple would expect in excellence, cause 'Hey, you can't have re-takes!'" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="{{ URL::asset('public/admin/src/css/bootstrap.css') }}" type="text/css" />

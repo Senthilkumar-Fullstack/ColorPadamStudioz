@@ -11,10 +11,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right" id="navigation-menu">
-                <li class="active"><a class="page-scroll" href="home#home" data-target="#home">Home</a></li>
+                <li class="{{ Request::path() == 'home' || Request::path() == '/' ? 'active' : '' }}"><a class="page-scroll" href="home#home" data-target="#home">Home</a></li>
                 <li><a class="page-scroll" href="home#about" data-target="#about">About</a></li>
                 <li><a class="page-scroll" href="home#contact" data-target="#contact">Contact</a></li>
-                <li><a href="galleries">Galleries</a></li>
+                <li class="{{ Request::path() == 'galleries' ? 'active' : '' }}"><a href="galleries">Galleries</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->

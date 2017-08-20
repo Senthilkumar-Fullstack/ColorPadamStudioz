@@ -8,3 +8,4 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('resources/assets/dist/css/styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('resources/assets/lib/OwlCarousel2/dist/assets/owl.carousel.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('resources/assets/lib/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('resources/assets/lib/lightbox2/dist/css/lightbox.min.css') }}">
