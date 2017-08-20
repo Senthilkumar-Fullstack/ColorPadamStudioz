@@ -1,0 +1,97 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col">
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Promotions</h1>
+                    <small class="text-muted">Manage Promotions</small>
+                </div>
+            </div>
+            <!-- / main header -->
+        </div>
+        <!-- / main -->
+        <div class="wrapper-md">
+            <!-- Add Promotion Form -->
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">
+                    Promotions
+                </div>
+                <div class="panel-body b-b b-light">
+                    Search:
+                    <input id="filter" type="text" class="form-control input-sm w-sm inline m-r" />
+
+                    <a ui-sref="app.promotions.create" class="btn btn-success pull-right">Create Promotion</a>
+                </div>
+                <div>
+                    <div class="padder-v text-center" data-ng-if="loading">
+                        <img src="public/admin/src/img/spinner.gif" />
+                    </div>
+                    <table data-ng-if="!loading" class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="5">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    Name
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Category
+                                </th>
+                                <th>
+                                    Created At
+                                </th>
+                                <th data-hide="phone,tablet">
+                                    Updated At
+                                </th>
+                                <th data-hide="phone">
+                                    Status
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cat in promotions">
+                                <td><a ng-click="getPromotionById(cat.promotion_id)">{{cat.name}}</a></td>
+                                <td>{{cat.description}}</td>
+                                <td>{{cat.price}}</td>
+                                <td>{{cat.category}}</td>
+                                <td>{{cat.created_at}}</td>
+                                <td>{{cat.updated_at}}</td>
+                                <td><span class="label bg-success" title="Active" ng-if="cat.is_active">Active</span>
+                                    <span class="label bg-warning" title="Inactive" ng-if="!cat.is_active">Inactive</span></td>
+                                <td>
+                                    <a ui-sref="app.promotions.edit({promotion_id: cat.promotion_id})" class="btn m-b-xs btn-sm btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
+                                    <button ng-click="deletePromotionConfirm(cat.category_id)" class="btn m-b-xs btn-sm btn-danger" title="Delete"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="panel b-a">
+                        <script type="text/ng-template" id="confirmModal.html">
+                            <div ng-include="'public/admin/src/tpl/modal_confirm.html'"></div>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

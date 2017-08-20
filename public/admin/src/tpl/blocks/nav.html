@@ -1,0 +1,44 @@
+<!-- list -->
+<ul class="nav">
+    <li>
+        <a ui-sref="app.dashboard" class="auto">
+      <i class="icon-home"></i>
+      <!-- <i class="glyphicon glyphicon-stats icon text-primary-dker"></i> -->
+      <span>Home</span>
+    </a>
+    </li>
+    <li>
+        <a ui-sref="app.promotion-categories" class="auto">
+      <i class="fa fa-anchor"></i>
+      <span>Categories</span>
+    </a>
+    </li>
+    <li>
+        <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-th"></i>
+      <span>Promotions</span>
+    </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+          <span>Promotions</span>
+        </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.promotions.create">
+          <span>Create</span>
+        </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.promotions.view">
+          <span>View</span>
+        </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<!-- / list -->

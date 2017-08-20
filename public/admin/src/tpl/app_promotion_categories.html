@@ -1,0 +1,109 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col">
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Promotion Categories</h1>
+                    <small class="text-muted">Manage Promotion Categories</small>
+                </div>
+            </div>
+            <!-- / main header -->
+        </div>
+        <!-- / main -->
+        <div class="wrapper-md">
+            <!-- Add Category Form -->
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">
+                    Add Category
+                </div>
+                <div class="panel-body">
+                    <form class="col-sm-6" role="form">
+                        <div class="form-group">
+                                <label for="categoryName">Category Name</label>
+                                <input type="text" class="form-control" id="categoryName" ng-model="form.category" placeholder="Category Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label><br />
+                                <div class="btn-group" ng-init="form.is_active = 1">
+                                    <label ng-class="{'active': form.is_active === 1 }" class="btn btn-md btn-success" ng-model="form.is_active" btn-radio="1"><i class="fa fa-check text-active"></i> Active</label>
+                                    <label ng-class="{'active': form.is_active === 0 }" class="btn btn-md btn-warning" ng-model="form.is_active" btn-radio="0"><i class="fa fa-check text-active"></i> Inactive</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" ng-if="!form.category_id" class="btn btn-success" ng-click="addCategory()">Submit</button>
+                                <button type="button" ng-if="form.category_id" class="btn btn-warning" ng-click="updateCategory()">Update</button>
+                                <button type="button" ng-if="form.category_id" class="btn" ng-click="clearForm()">Clear</button>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">
+                    Categories
+                </div>
+                <div class="panel-body b-b b-light">
+                    Search:
+                    <input id="filter" type="text" class="form-control input-sm w-sm inline m-r" />
+                </div>
+                <div>
+                    <div class="padder-v text-center" data-ng-if="loading">
+                        <img src="public/admin/src/img/spinner.gif" alt="">
+                    </div>
+                    <table data-ng-if="!loading" class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="5">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    Category Name
+                                </th>
+                                <th>
+                                    Created At
+                                </th>
+                                <th data-hide="phone,tablet">
+                                    Updated At
+                                </th>
+                                <th data-hide="phone">
+                                    Status
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cat in categories">
+                                <td><a ng-click="getCategoryById(cat.category_id)">{{cat.category}}</a></td>
+                                <td>{{cat.created_at}}</td>
+                                <td>{{cat.updated_at}}</td>
+                                <td><span class="label bg-success" title="Active" ng-if="cat.is_active">Active</span>
+                                    <span class="label bg-warning" title="Inactive" ng-if="!cat.is_active">Inactive</span></td>
+                                <td>
+                                    <button ng-click="getCategoryById(cat.category_id)" class="btn m-b-xs btn-sm btn-info" title="Edit"><i class="fa fa-pencil"></i></button>
+                                    <button ng-click="deleteCategoryConfirm(cat.category_id)" class="btn m-b-xs btn-sm btn-danger" title="Delete"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="panel b-a">
+                    <script type="text/ng-template" id="confirmModal.html">
+                        <div ng-include="'public/admin/src/tpl/modal_confirm.html'"></div>
+                    </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

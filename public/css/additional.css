@@ -1,0 +1,19 @@
+/**
+ * Lightbox2
+ */
+.lightbox .lb-outerContainer {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.lb-dataContainer {
+	background-color: #ddd;
+}
+
+.lb-dataContainer .lb-data {
+	color: #000;
+}
+
+.lb-dataContainer .lb-details {
+	padding: 5px 10px;
+}
